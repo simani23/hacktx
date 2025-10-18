@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # Python Backend Service
+  backend:
+    build:
+      context: ./python-backend
+      dockerfile: Dockerfile
+    container_name: f1-python-backend
+    ports:
+      - "3001:3001"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=3001
+      - RELOAD=False
+    volumes:
+      - ./python-backend:/app
+      - ./python-backend/cache:/app/cache
+    restart: unless-stopped
+    networks:
+      - f1-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:3001/api/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Frontend Service
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: f1-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_SOCKET_URL=http://localhost:3001
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - f1-network
+
+networks:
+  f1-network:
+    driver: bridge
+

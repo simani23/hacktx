@@ -1,0 +1,36 @@
+# F1 Race Strategy Platform - Python Backend Dependencies
+
+# Web Framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+python-socketio==5.11.0
+python-multipart==0.0.6
+
+# CORS and middleware
+
+# F1 Data
+fastf1==3.2.0
+
+# Scientific Computing
+numpy==1.26.3
+pandas==2.1.4
+scipy==1.11.4
+
+# Parallel Processing
+ray
+
+# Data Validation
+pydantic>=2.7.0
+pydantic-settings>=2.0.0
+
+# Utilities
+python-dotenv==1.0.0
+aiofiles==23.2.1
+
+# Optional: GPU acceleration (uncomment if CUDA available)
+# cupy-cuda12x==12.3.0
+
+# Optional: ML for predictions (uncomment if needed)
+# scikit-learn==1.4.0
+# torch==2.1.2
+

@@ -1,0 +1,105 @@
+.track-visualization {
+  position: relative;
+  width: 100%;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  padding: var(--spacing-lg);
+  overflow: hidden;
+}
+
+.track-controls {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  z-index: 10;
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.track-controls button.active {
+  background: var(--accent-blue);
+  color: white;
+}
+
+.track-canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+}
+
+.car-info-overlay {
+  position: absolute;
+  top: var(--spacing-md);
+  left: var(--spacing-md);
+  z-index: 10;
+  max-width: 300px;
+}
+
+.car-info-card {
+  background: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-xl);
+}
+
+.car-info-header {
+  border-left: 4px solid var(--accent-blue);
+  padding-left: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.car-info-header h3 {
+  font-size: 1.25rem;
+  margin: 0 0 var(--spacing-xs) 0;
+  color: var(--text-primary);
+}
+
+.team-name {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.car-info-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .track-visualization {
+    padding: var(--spacing-md);
+  }
+
+  .car-info-overlay {
+    max-width: calc(100% - 2rem);
+  }
+
+  .car-info-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
